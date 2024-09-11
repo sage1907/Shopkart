@@ -8,7 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import baseURL from "../../utils/baseURL";
-import logo from "./logo3.png";
+import logo2 from "./shopkart2.png";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategoriesAction } from "../../redux/slices/categories/categoriesSlice";
 import { getCartItemsFromLocalStorageAction } from "../../redux/slices/cart/cartSlices";
@@ -112,6 +112,7 @@ export default function Navbar() {
                   {categoriesToDisplay?.length <= 0 ? (
                     <>
                       <Link
+                        key="clothing"
                         to="/products?category=clothing"
                         className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                       >
@@ -119,6 +120,7 @@ export default function Navbar() {
                       </Link>
 
                       <Link
+                        key="men"
                         to="/"
                         className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                       >
@@ -126,6 +128,7 @@ export default function Navbar() {
                       </Link>
 
                       <Link
+                        key="women"
                         to="/"
                         className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                       >
@@ -135,7 +138,7 @@ export default function Navbar() {
                   ) : (
                     categoriesToDisplay?.map((category) => {
                       return (
-                        <>
+                        
                           <Link
                             key={category?._id}
                             to={`/products-filters?category=${category?.name}`}
@@ -143,7 +146,7 @@ export default function Navbar() {
                           >
                             {category?.name}
                           </Link>
-                        </>
+                        
                       );
                     })
                   )}
@@ -238,8 +241,8 @@ export default function Navbar() {
                     <Link to="/">
                       <span className="sr-only">Your Company</span>
                       <img
-                        className="h-32 pt-2 w-auto"
-                        src={logo}
+                        className="h-14 pt-2 w-22 rounded-md"
+                        src={logo2}
                         alt="i-novotek logo"
                       />
                     </Link>
@@ -275,7 +278,7 @@ export default function Navbar() {
                         ) : (
                           categoriesToDisplay?.map((category) => {
                             return (
-                              <>
+                              
                                 <Link
                                   key={category?._id}
                                   to={`/products-filters?category=${category?.name}`}
@@ -283,7 +286,7 @@ export default function Navbar() {
                                 >
                                   {category?.name}
                                 </Link>
-                              </>
+                              
                             );
                           })
                         )}
@@ -306,7 +309,7 @@ export default function Navbar() {
                   <Link to="/" className="lg:hidden">
                     <img
                       className="h-32 mt-2 w-auto"
-                      src={logo}
+                      src={logo2}
                       alt="i-novotek logo"
                     />
                   </Link>

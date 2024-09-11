@@ -236,7 +236,7 @@ export default function ProductsFilters() {
                     {/*  */}
                     <Disclosure
                       as="div"
-                      key="disclosure"
+                      key="disclosure1"
                       className="border-t border-gray-200 px-4 py-6">
                       {({ open }) => (
                         <>
@@ -305,7 +305,7 @@ export default function ProductsFilters() {
                     {/* price categories section */}
                     <Disclosure
                       as="div"
-                      key="disclosure"
+                      key="disclosure2"
                       className="border-t border-gray-200 px-4 py-6">
                       {({ open }) => (
                         <>
@@ -356,7 +356,7 @@ export default function ProductsFilters() {
                     {/* product brand categories section categories section */}
                     <Disclosure
                       as="div"
-                      key="disclosure"
+                      key="disclosure3"
                       className="border-t border-gray-200 px-4 py-6">
                       {({ open }) => (
                         <>
@@ -407,7 +407,7 @@ export default function ProductsFilters() {
                     {/* product size categories   */}
                     <Disclosure
                       as="div"
-                      key="disclosure"
+                      key="disclosure4"
                       className="border-t border-gray-200 px-4 py-6">
                       {({ open }) => (
                         <>
@@ -534,7 +534,7 @@ export default function ProductsFilters() {
                 {/* colors categories Desktop section */}
                 <Disclosure
                   as="div"
-                  key="disclosure"
+                  key="disclosure5"
                   className="border-t border-gray-200 px-4 py-6">
                   {({ open }) => (
                     <>
@@ -602,7 +602,7 @@ export default function ProductsFilters() {
                 {/* price categories section Desktop*/}
                 <Disclosure
                   as="div"
-                  key="disclosure"
+                  key="disclosure6"
                   className="border-t border-gray-200 px-4 py-6">
                   {({ open }) => (
                     <>
@@ -651,7 +651,7 @@ export default function ProductsFilters() {
                 {/* product brand categories section categories section */}
                 <Disclosure
                   as="div"
-                  key="disclosure"
+                  key="disclosure7"
                   className="border-t border-gray-200 px-4 py-6">
                   {({ open }) => (
                     <>
@@ -700,7 +700,7 @@ export default function ProductsFilters() {
                 {/* product size categories  desktop */}
                 <Disclosure
                   as="div"
-                  key="disclosure"
+                  key="disclosure8"
                   className="border-t border-gray-200 px-4 py-6">
                   {({ open }) => (
                     <>

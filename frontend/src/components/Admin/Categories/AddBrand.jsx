@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createBrandAction } from "../../../redux/slices/categories/brandsSlice";
@@ -8,30 +8,36 @@ import SuccessMsg from "../../SuccessMsg/SuccessMsg";
 
 export default function AddBrand() {
   const dispatch = useDispatch();
-  //form data
   const [formData, setFormData] = useState({
     name: "",
   });
-  //onChange
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const handleOnChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  //onSubmit
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(createBrandAction(formData?.name));
-    //reset form
-    setFormData({
-      name: "",
-    });
+    dispatch(createBrandAction(formData.name));
   };
-  //get data from store
+
   const { error, loading, isAdded } = useSelector((state) => state?.brands);
+
+  useEffect(() => {
+    if (isAdded) {
+      setFormData({ name: "" });
+      setShowSuccess(true);
+      const timer = setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isAdded]);
 
   return (
     <>
-      {isAdded && <SuccessMsg message="Brand Created Successfully" />}
+      {showSuccess && <SuccessMsg message="Brand Created Successfully" />}
       {error && <ErrorMsg message={error?.message} />}
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -40,11 +46,11 @@ export default function AddBrand() {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor">
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
             />
           </svg>
@@ -59,12 +65,13 @@ export default function AddBrand() {
             <form className="space-y-6" onSubmit={handleOnSubmit}>
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="name"
                   className="block text-sm font-medium text-gray-700">
                   Name
                 </label>
                 <div className="mt-1">
                   <input
+                    id="name"
                     onChange={handleOnChange}
                     value={formData.name}
                     name="name"

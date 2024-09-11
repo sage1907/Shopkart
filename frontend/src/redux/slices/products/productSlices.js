@@ -22,7 +22,6 @@ const initialState = {
 export const createProductAction = createAsyncThunk(
   "product/create",
   async (payload, { rejectWithValue, getState, dispatch }) => {
-    console.log(payload);
     try {
       const {
         name,

@@ -7,6 +7,7 @@ import Category from "../models/Category.js";
 
 export const createCategoryCtrl = asyncHandler(async (req, res) => {
   const { name } = req.body;
+
   //category exists
   const categoryFound = await Category.findOne({ name });
   if (categoryFound) {
