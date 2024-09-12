@@ -35,7 +35,7 @@ const Products = ({ products }) => {
                     <p className="text-lg font-bold font-heading text-blue-500">
                       <span>${product?.price}</span>
                       <span className="text-xs text-gray-500 font-semibold font-heading line-through">
-                        $40.99
+                        ${product?.price + 11}
                       </span>
                     </p>
                   </a>

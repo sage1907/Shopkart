@@ -24,7 +24,7 @@ const ProductSchema = new Schema(
     sizes: {
       type: [String],
       enum: ["S", "M", "L", "XL", "XXL"],
-      required: true,
+      required: false,
     },
     colors: {
       type: [String],
