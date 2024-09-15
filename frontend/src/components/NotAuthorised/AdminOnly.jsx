@@ -21,7 +21,8 @@ export default function AdminOnly() {
               <div className="mt-6">
                 <Link
                   to="/login"
-                  className="text-base font-medium text-indigo-600 hover:text-indigo-500">
+                  className="text-base font-medium text-indigo-600 hover:text-indigo-500"
+                >
                   Go Home
                   <span aria-hidden="true"> &rarr;</span>
                 </Link>

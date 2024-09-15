@@ -22,7 +22,6 @@ const initialState = {
 export const createCategoryAction = createAsyncThunk(
   "category/create",
   async (payload, { rejectWithValue, getState, dispatch }) => {
-    
     try {
       const { name, file } = payload;
       //fromData

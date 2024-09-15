@@ -39,7 +39,8 @@ export default function AddColor() {
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="currentColor">
+            stroke="currentColor"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -57,7 +58,8 @@ export default function AddColor() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700">
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Name
                 </label>
                 <div className="mt-1">
@@ -75,7 +77,8 @@ export default function AddColor() {
                 ) : (
                   <button
                     type="submit"
-                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
                     Add Product Color
                   </button>
                 )}
@@ -96,7 +99,8 @@ export default function AddColor() {
                 <div>
                   <Link
                     to="/admin/add-brand"
-                    className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                    className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                  >
                     Add Brand
                   </Link>
                 </div>
@@ -105,7 +109,8 @@ export default function AddColor() {
                   <div>
                     <Link
                       to="/admin/add-brand"
-                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                    >
                       Add Color
                     </Link>
                   </div>
@@ -115,7 +120,8 @@ export default function AddColor() {
                   <div>
                     <Link
                       to="/admin/add-category"
-                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
+                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                    >
                       Add Category
                     </Link>
                   </div>

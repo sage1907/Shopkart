@@ -14,7 +14,7 @@ export const createOrderCtrl = asyncHandler(async (req, res) => {
   // Get the payload (orderItems, shippingAddress, totalPrice)
   const { orderItems, shippingAddress, totalPrice } = req.body;
   console.log(req.body);
-  
+
   // Find the user
   const user = await User.findById(req.userAuthId);
 
@@ -37,10 +37,14 @@ export const createOrderCtrl = asyncHandler(async (req, res) => {
   });
 
   // Update product quantities
-  const products = await Product.find({ _id: { $in: orderItems.map(item => item._id) } });
+  const products = await Product.find({
+    _id: { $in: orderItems.map((item) => item._id) },
+  });
 
   orderItems?.forEach(async (orderItem) => {
-    const product = products?.find(product => product?._id?.toString() === orderItem?._id?.toString());
+    const product = products?.find(
+      (product) => product?._id?.toString() === orderItem?._id?.toString()
+    );
     if (product) {
       product.totalSold += orderItem.qty;
       await product.save();
@@ -136,7 +140,11 @@ export const getOrderStatsCtrl = asyncHandler(async (req, res) => {
 
   // Get the sales for today
   const today = new Date();
-  const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const startOfDay = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
 
   const saleToday = await Order.aggregate([
     {

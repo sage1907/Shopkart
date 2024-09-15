@@ -32,8 +32,12 @@ export default function AddProduct() {
   });
 
   const { categories } = useSelector((state) => state?.categories?.categories);
-  const { brands: { brands } } = useSelector((state) => state?.brands);
-  const { colors: { colors } } = useSelector((state) => state?.colors);
+  const {
+    brands: { brands },
+  } = useSelector((state) => state?.brands);
+  const {
+    colors: { colors },
+  } = useSelector((state) => state?.colors);
   const { loading, error, isAdded } = useSelector((state) => state?.products);
 
   useEffect(() => {
@@ -44,10 +48,15 @@ export default function AddProduct() {
 
   const fileHandleChange = (event) => {
     const newFiles = Array.from(event.target.files);
-    const newErrs = newFiles.filter(file => 
-      file.size > 1000000 || !file.type.startsWith("image/")
-    ).map(file => `${file.name} is ${file.size > 1000000 ? "too large" : "not an image"}`);
-    
+    const newErrs = newFiles
+      .filter((file) => file.size > 1000000 || !file.type.startsWith("image/"))
+      .map(
+        (file) =>
+          `${file.name} is ${
+            file.size > 1000000 ? "too large" : "not an image"
+          }`
+      );
+
     setFiles(newFiles);
     setFileErrs(newErrs);
   };
@@ -113,9 +122,11 @@ export default function AddProduct() {
   return (
     <>
       {error && <ErrorMsg message={error?.message} />}
-      {fileErrs.length > 0 && <ErrorMsg message="File too large or invalid image format" />}
+      {fileErrs.length > 0 && (
+        <ErrorMsg message="File too large or invalid image format" />
+      )}
       {isAdded && <SuccessMsg message="Product Added Successfully" />}
-      
+
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">

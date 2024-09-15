@@ -34,22 +34,40 @@ export default function OrdersList() {
           <table className="min-w-full divide-y divide-gray-300">
             <thead className="bg-gray-50">
               <tr>
-                <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                <th
+                  scope="col"
+                  className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                >
                   Order ID
                 </th>
-                <th scope="col" className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                <th
+                  scope="col"
+                  className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                >
                   Payment Status
                 </th>
-                <th scope="col" className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                <th
+                  scope="col"
+                  className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell"
+                >
                   Order Date
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                <th
+                  scope="col"
+                  className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
                   Delivery Date
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                <th
+                  scope="col"
+                  className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
                   Status
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                <th
+                  scope="col"
+                  className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
                   Total
                 </th>
               </tr>
@@ -98,13 +116,15 @@ export default function OrdersList() {
                       {order?.paymentStatus === "Not paid" ? (
                         <Link
                           style={{ cursor: "not-allowed" }}
-                          className="text-gray-300">
+                          className="text-gray-300"
+                        >
                           Edit
                         </Link>
                       ) : (
                         <Link
                           to={`/admin/orders/${order?._id}`}
-                          className="text-indigo-600 hover:text-indigo-900">
+                          className="text-indigo-600 hover:text-indigo-900"
+                        >
                           Edit
                         </Link>
                       )}

@@ -138,13 +138,16 @@ export default function Product() {
         text: "Please select product color",
       });
     }
-    if (selectedSize === "") {
-      return Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Please select  p roduct size",
-      });
+    if (product?.category === "fashion") {
+      if (selectedSize === "") {
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Please select product size",
+        });
+      }
     }
+
     dispatch(
       addOrderToCartaction({
         _id: product?._id,
@@ -204,11 +207,13 @@ export default function Product() {
                 </div>
                 <div
                   aria-hidden="true"
-                  className="ml-4 text-sm text-gray-300"></div>
+                  className="ml-4 text-sm text-gray-300"
+                ></div>
                 <div className="ml-4 flex">
                   <a
                     href="#"
-                    className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                    className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                  >
                     {productDetails?.product?.totalReviews} total reviews
                   </a>
                 </div>
@@ -264,7 +269,8 @@ export default function Product() {
                               !active && checked ? "ring-2" : "",
                               "-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none"
                             )
-                          }>
+                          }
+                        >
                           <RadioGroup.Label as="span" className="sr-only">
                             {color}
                           </RadioGroup.Label>
@@ -283,46 +289,53 @@ export default function Product() {
               </div>
 
               {/* Size picker */}
-              <div className="mt-8">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-medium text-gray-900">Size</h2>
-                </div>
-                <RadioGroup
-                  value={selectedSize}
-                  onChange={setSelectedSize}
-                  className="mt-2">
-                  {/* Choose size */}
-                  <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                    {product?.sizes?.map((size) => (
-                      <RadioGroup.Option
-                        key={size}
-                        value={size}
-                        className={({ active, checked }) => {
-                          return classNames(
-                            checked
-                              ? "bg-indigo-600 border-transparent  text-white hover:bg-indigo-700"
-                              : "bg-white border-gray-200 text-gray-900 hover:bg-gray-50",
-                            "border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 cursor-pointer"
-                          );
-                        }}>
-                        <RadioGroup.Label as="span">{size}</RadioGroup.Label>
-                      </RadioGroup.Option>
-                    ))}
+              {product?.category === "fashion" && (
+                <div className="mt-8">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-sm font-medium text-gray-900">Size</h2>
                   </div>
-                </RadioGroup>
-              </div>
+                  <RadioGroup
+                    value={selectedSize}
+                    onChange={setSelectedSize}
+                    className="mt-2"
+                  >
+                    {/* Choose size */}
+                    <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
+                      {product?.sizes?.map((size) => (
+                        <RadioGroup.Option
+                          key={size}
+                          value={size}
+                          className={({ active, checked }) => {
+                            return classNames(
+                              checked
+                                ? "bg-indigo-600 border-transparent  text-white hover:bg-indigo-700"
+                                : "bg-white border-gray-200 text-gray-900 hover:bg-gray-50",
+                              "border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 cursor-pointer"
+                            );
+                          }}
+                        >
+                          <RadioGroup.Label as="span">{size}</RadioGroup.Label>
+                        </RadioGroup.Option>
+                      ))}
+                    </div>
+                  </RadioGroup>
+                </div>
+              )}
+
               {/* add to cart */}
               {product?.qtyLeft <= 0 ? (
                 <button
                   style={{ cursor: "not-allowed" }}
                   disabled
-                  className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-gray-600 py-3 px-8 text-base font-medium text-whitefocus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                  className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-gray-600 py-3 px-8 text-base font-medium text-whitefocus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
                   Add to cart
                 </button>
               ) : (
                 <button
                   onClick={() => addToCartHandler()}
-                  className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                  className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
                   Add to cart
                 </button>
               )}
@@ -331,7 +344,8 @@ export default function Product() {
               {cartItems.length > 0 && (
                 <Link
                   to="/shopping-cart"
-                  className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-green-800 py-3 px-8 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                  className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-green-800 py-3 px-8 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
                   Proceed to checkout
                 </Link>
               )}
@@ -355,7 +369,8 @@ export default function Product() {
                 {policies.map((policy) => (
                   <div
                     key={policy.name}
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center"
+                  >
                     <dt>
                       <policy.icon
                         className="mx-auto h-6 w-6 flex-shrink-0 text-gray-400"
@@ -379,7 +394,8 @@ export default function Product() {
         <section aria-labelledby="reviews-heading" className="mt-16 sm:mt-24">
           <h2
             id="reviews-heading"
-            className="text-lg font-medium text-gray-900">
+            className="text-lg font-medium text-gray-900"
+          >
             Recent reviews
           </h2>
 
@@ -387,7 +403,8 @@ export default function Product() {
             {product?.reviews.map((review) => (
               <div
                 key={review._id}
-                className="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
+                className="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8"
+              >
                 <div className="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
                   <div className="flex items-center xl:col-span-1">
                     <div className="flex items-center">
@@ -423,7 +440,8 @@ export default function Product() {
                   </p>
                   <time
                     dateTime={review.datetime}
-                    className="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:ml-0 lg:mt-2 lg:border-0 lg:pl-0">
+                    className="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:ml-0 lg:mt-2 lg:border-0 lg:pl-0"
+                  >
                     {new Date(review.createdAt).toLocaleDateString()}
                   </time>
                 </div>

@@ -22,5 +22,4 @@ categoriesRouter.get("/:id", getSingleCategoryCtrl);
 categoriesRouter.delete("/:id", deleteCategoryCtrl);
 categoriesRouter.put("/:id", updateCategoryCtrl);
 
-
 export default categoriesRouter;
